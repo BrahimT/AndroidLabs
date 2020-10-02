@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="hello_message">Bonjour!</string>
+    <string name="type_message">Ecris ici!</string>
+    <string name="ButtonText">Je suis un bouton</string>
+    <string name="ButtonText3">Clique ici</string>
+    <string name="checkbox">regarde cela ! </string>
+    <string name="textview">regarde mon  interface graphic</string>
+    <string name="switchbutton">change allume / eteint</string>
+
+
+</resources>
