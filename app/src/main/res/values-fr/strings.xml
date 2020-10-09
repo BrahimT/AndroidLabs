@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab2</string>
+    <string name="app_name">Labs</string>
     <string name="hello_message">Bonjour!</string>
     <string name="type_message">Ecris ici!</string>
     <string name="ButtonText">Je suis un bouton</string>
@@ -8,6 +8,17 @@
     <string name="checkbox">regarde cela ! </string>
     <string name="textview">regarde mon  interface graphic</string>
     <string name="switchbutton">change allume / eteint</string>
-
+    <string name="toast_message">toast message</string>
+    <string name="Email_intro"> Entre ton email address:</string>
+    <string name="Email_address">  ecris ton email ici</string>
+    <string name="password">Ecris ton mot de passe</string>
+    <string name="Login">identifier</string>
+    <string name="your_profile">votre profil:</string>
+    <string name="name">votre nom:</string>
+    <string name="name1">Entre ton nom</string>
+    <string name="email">votre email:</string>
+    <string name="enter_email">Entre ton email</string>
+    <string name="picture">Votre photo:</string>
+    <string name="button">Appuie le boutton au dessus pour prendre une photo</string>
 
 </resources>
