@@ -8,16 +8,19 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 
 public class ProfileActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    ImageButton mImageButton;
+    ImageButton mImageButton ;
+    Button chat;
     public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
     EditText  text;
     String p2;
+    Intent chatRoom;
 
 
 
@@ -35,7 +38,13 @@ public class ProfileActivity extends AppCompatActivity {
         mImageButton.setOnClickListener(e ->{
             dispatchTakePictureIntent();
         });
+        chat=(Button) findViewById(R.id.button4);
+        chat.setText("Go to chat");
 
+        chat.setOnClickListener(e ->{
+             chatRoom=new Intent(this, ChatRoomActivity.class);
+         startActivity(chatRoom);
+        });
     }
 
     @Override
