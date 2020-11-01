@@ -37,6 +37,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     chatAdapter aListAdapter;
     EditText editText;
     Button sender, Receiver;
+    String c2="";
     String n;
     String o;
     Message message;
@@ -134,13 +135,16 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
     protected void printCursor(Cursor c,int version) {
+        String[] columnNames = c.getColumnNames();
         Log.d("PrintCursor", "The number of columns in the cursor: " + c.getColumnCount());
         Log.d("PrintCursor", "The database version number: " + db.getVersion());
-        Log.d("PrintCursor", "The number of columns in the cursor: " + c.getColumnCount());
+        //
+        Log.d("PrintCursor", "The number of rows in the cursor: " + c.getCount());
         for (int a = 0; a < c.getColumnCount(); a++) {
             Log.d("PrintCursor", "The name of columns in the cursor: "+ c.getColumnName(a));
         }
         Log.d("PrintCursor", "Print out each row of results in the cursor: " +DatabaseUtils.dumpCurrentRowToString(c)) ;
+
     }
 
 
