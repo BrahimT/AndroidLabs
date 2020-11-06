@@ -57,29 +57,29 @@ public class ChatRoomActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText7);
         MyOpener dbHelper = new MyOpener(this);
 
-         db = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
         String[] save_Results= {MyOpener.ColumnID, MyOpener.MESSAGE, MyOpener.TYPE};
         Cursor c = db.query(false, MyOpener.Tabe_Name, save_Results, null, null, null, null, null, null);
         id1=c.getColumnIndex(MyOpener.ColumnID);
         id2=c.getColumnIndex(MyOpener.MESSAGE);
         id3=c.getColumnIndex(MyOpener.TYPE);
 
-      for(int i=0;i<c.getCount();i++){
-          c.moveToNext();
-          n=c.getString( id1);
-          o=c.getString(id2);
-          z=c.getLong(id3);
+        for(int i=0;i<c.getCount();i++){
+            c.moveToNext();
+            n=c.getString( id1);
+            o=c.getString(id2);
+            z=c.getLong(id3);
 
-          if(n.contains("false")){
-              list.add(new Message(o,false, z));
-          }else{
-              list.add(new Message(o,true, z));
-          }
-      }
+            if(n.contains("false")){
+                list.add(new Message(o,false, z));
+            }else{
+                list.add(new Message(o,true, z));
+            }
+        }
 
         aListAdapter = new chatAdapter();
         p.setAdapter(aListAdapter);
-      printCursor( c,1 );
+     printCursor( c,1 );
 
         sender.setOnClickListener(e -> {
             ContentValues cv = new ContentValues();
@@ -91,14 +91,14 @@ public class ChatRoomActivity extends AppCompatActivity {
             editText.setText("");
 
 
-          //  list.add(new Message(editText.getText().toString(), true));
-         //   aListAdapter.notifyDataSetChanged();
-         //   editText.setText("");
+            //  list.add(new Message(editText.getText().toString(), true));
+            //   aListAdapter.notifyDataSetChanged();
+            //   editText.setText("");
         });
         Receiver.setOnClickListener(e -> {
-         //   list.add(new Message(editText.getText().toString(), false));
-         //   aListAdapter.notifyDataSetChanged();
-          //  editText.setText("");
+            //   list.add(new Message(editText.getText().toString(), false));
+            //   aListAdapter.notifyDataSetChanged();
+            //  editText.setText("");
             ContentValues cv = new ContentValues();
             cv.put(MyOpener.MESSAGE, editText.getText().toString());
             cv.put(MyOpener.TYPE, true);
@@ -138,13 +138,12 @@ public class ChatRoomActivity extends AppCompatActivity {
         String[] columnNames = c.getColumnNames();
         Log.d("PrintCursor", "The number of columns in the cursor: " + c.getColumnCount());
         Log.d("PrintCursor", "The database version number: " + db.getVersion());
-        //
         Log.d("PrintCursor", "The number of rows in the cursor: " + c.getCount());
         for (int a = 0; a < c.getColumnCount(); a++) {
             Log.d("PrintCursor", "The name of columns in the cursor: "+ c.getColumnName(a));
         }
-        Log.d("PrintCursor", "Print out each row of results in the cursor: " +DatabaseUtils.dumpCurrentRowToString(c)) ;
 
+        Log.d("PrintCursor", "Print out each row of results in the cursor: " +DatabaseUtils.dumpCurrentRowToString(c)) ;
     }
 
 
@@ -167,7 +166,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-        //    View view1 = convertView;
+            //    View view1 = convertView;
             String s;
             View view2;
             Message message= (Message) getItem(position);
@@ -218,10 +217,10 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
         @Override
         public void onDowngrade(SQLiteDatabase db, int oldVer, int newVer) {
-         if(oldVer>newVer){
-             db.execSQL("DROP TABLE IF EXISTS " + Tabe_Name);
-             onCreate(db);
-         }
+            if(oldVer>newVer){
+                db.execSQL("DROP TABLE IF EXISTS " + Tabe_Name);
+                onCreate(db);
+            }
         }
     }// end SQLiteOpenHelper
 
