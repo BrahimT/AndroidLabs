@@ -38,7 +38,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     EditText editText;
     Button sender, Receiver;
     String c2="";
-    String n;
+    int n;
     String o;
     Message message;
     long z;
@@ -66,11 +66,11 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         for(int i=0;i<c.getCount();i++){
             c.moveToNext();
-            n=c.getString( id1);
+            n=c.getInt( id1);
             o=c.getString(id2);
-            z=c.getLong(id3);
+            z=c.getInt(id3);
 
-            if(n.contains("false")){
+            if(z==0){
                 list.add(new Message(o,false, z));
             }else{
                 list.add(new Message(o,true, z));
@@ -84,7 +84,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         sender.setOnClickListener(e -> {
             ContentValues cv = new ContentValues();
             cv.put(MyOpener.MESSAGE, editText.getText().toString());
-            cv.put(MyOpener.TYPE, true);
+            cv.put(MyOpener.TYPE, 1);
             long id = db.insert(MyOpener.Tabe_Name, null, cv);
             list.add(  message=new Message(editText.getText().toString(),true,id));
             aListAdapter.notifyDataSetChanged();
@@ -101,7 +101,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             //  editText.setText("");
             ContentValues cv = new ContentValues();
             cv.put(MyOpener.MESSAGE, editText.getText().toString());
-            cv.put(MyOpener.TYPE, true);
+            cv.put(MyOpener.TYPE, 0);
             long id = db.insert(MyOpener.Tabe_Name, null, cv);
 
             list.add( message=new Message(editText.getText().toString(),false,id));
@@ -143,7 +143,9 @@ public class ChatRoomActivity extends AppCompatActivity {
             Log.d("PrintCursor", "The name of columns in the cursor: "+ c.getColumnName(a));
         }
 
-        Log.d("PrintCursor", "Print out each row of results in the cursor: " +DatabaseUtils.dumpCurrentRowToString(c)) ;
+       if(!c.isAfterLast()){
+           Log.d("PrintCursor", "Print out each row of results in the cursor: " +DatabaseUtils.dumpCurrentRowToString(c)) ;
+       }
     }
 
 
@@ -202,12 +204,12 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
         public MyOpener(Context ctx) {
-            super(ctx, Database, null, 1);
+            super(ctx, Database, null, 2);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " +Tabe_Name+"("+ColumnID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+MESSAGE+" TEXT,"+TYPE+" TEXT)");
+            db.execSQL("CREATE TABLE " +Tabe_Name+"("+ColumnID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+MESSAGE+" TEXT,"+TYPE+" INTEGER)");
         }
 
         @Override
