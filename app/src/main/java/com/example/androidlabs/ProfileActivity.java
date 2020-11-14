@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText  text;
     String p2;
     Intent chatRoom;
+    Intent  weatherForecast;
 
 
 
@@ -44,6 +45,11 @@ public class ProfileActivity extends AppCompatActivity {
         chat.setOnClickListener(e ->{
              chatRoom=new Intent(this, ChatRoomActivity.class);
          startActivity(chatRoom);
+        });
+        Button goToWeatherForecast=(Button) findViewById(R.id.button5);
+        goToWeatherForecast.setOnClickListener(e ->{
+          weatherForecast=new Intent(this, WeatherForecast.class);
+            startActivity( weatherForecast);
         });
     }
 
