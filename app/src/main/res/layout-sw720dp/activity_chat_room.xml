@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChatRoomActivity">
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/sendbtn" />
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/listview"
+        android:layout_alignParentRight="true"
+        >
+
+    </FrameLayout>
+    <Button
+        android:id="@+id/sendbtn"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/sender" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/sendbtn"
+        android:layout_toLeftOf="@id/rcvbtn"
+        android:hint="@string/type_here"
+        android:inputType="text"      />
+
+    <Button
+        android:id="@+id/rcvbtn"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/listview"
+        android:layout_alignParentBottom="true"
+        android:text="@string/receiver" />
+
+
+</RelativeLayout>
+
+
+
+
+

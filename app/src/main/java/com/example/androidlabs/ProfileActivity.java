@@ -22,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     String p2;
     Intent chatRoom;
     Intent  weatherForecast;
+    Intent toolbar;
 
 
 
@@ -51,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
           weatherForecast=new Intent(this, WeatherForecast.class);
             startActivity( weatherForecast);
         });
+
     }
 
     @Override
