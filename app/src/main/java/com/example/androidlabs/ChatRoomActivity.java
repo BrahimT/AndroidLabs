@@ -52,7 +52,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     public static final String ITEM_SELECTED = "ITEM";
     public static final String ITEM_POSITION = "POSITION";
     public static final String ITEM_ID = "ID";
-    private DetailsFragment dFragment;
+    private DetailFragment dFragment;
     private boolean isTablet;
 
     @Override
@@ -64,7 +64,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         sender = (Button) findViewById(R.id.sendbtn);
         Receiver = (Button) findViewById(R.id.rcvbtn);
         editText = (EditText) findViewById(R.id.editText7);
-        isTablet = (findViewById(R.id.fragment) != null);
+        isTablet = (findViewById(R.id.frame) != null);
         MyOpener dbHelper = new MyOpener(this);
 
         db = dbHelper.getWritableDatabase();
@@ -104,9 +104,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             //  list.add(new Message(editText.getText().toString(), true));
             //   aListAdapter.notifyDataSetChanged();
             //   editText.setText("");
-
         });
-
         Receiver.setOnClickListener(e -> {
             //   list.add(new Message(editText.getText().toString(), false));
             //   aListAdapter.notifyDataSetChanged();
@@ -131,12 +129,12 @@ public class ChatRoomActivity extends AppCompatActivity {
 
                     if( isTablet) { //both the list and details are on the screen:
 
-                       dFragment = new DetailsFragment(); //add a DetailFragment
-                        dFragment.setTablet(true);
+                        dFragment = new DetailFragment(); //add a DetailFragment
+
                         dFragment.setArguments( dataToPass ); //pass it a bundle for information
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.fragmentLocation, Fragment) //Add the fragment in FrameLayout
+                                .replace(R.id.frame, Fragment) //Add the fragment in FrameLayout
                                 .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
             }
             //for Phone:
@@ -146,18 +144,15 @@ public class ChatRoomActivity extends AppCompatActivity {
                 Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
                 nextActivity.putExtras(dataToPass); //send data to next activity
                 startActivity(nextActivity); //make the transition
-
-                //  parent.setResult(Activity.RESULT_OK, toFragment); //send data back to FragmentExample in onActivityResult()
-
             }
                 });
 
         p.setOnItemLongClickListener(((parent, view, position, id) -> {
 
             AlertDialog.Builder alrtBldr = new AlertDialog.Builder(ChatRoomActivity.this);
-            AlertDialog alertDialog = alrtBldr.setTitle("Do you want to delete this message?")
+            AlertDialog alertDialog = alrtBldr .setTitle("Do you want to delete this message?" )
                     .setMessage("The message position is " + position + "\n the database id is " + id)
-                    .setPositiveButton("Delete", (click, args) -> {
+                    .setPositiveButton("Delete", (click, args)-> {
                         list.remove(position);
                         aListAdapter.notifyDataSetChanged();
                     })
@@ -233,7 +228,6 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
     }//endof list adapter
-
     class MyOpener extends SQLiteOpenHelper {
         public static final String Database = "Database";
         public static final String Tabe_Name = "Message";
@@ -242,13 +236,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         public static final String TYPE = "TYPE";
 
 
+
         public MyOpener(Context ctx) {
             super(ctx, Database, null, 2);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + Tabe_Name + "(" + ColumnID + " INTEGER PRIMARY KEY AUTOINCREMENT," + MESSAGE + " TEXT," + TYPE + " INTEGER)");
+            db.execSQL("CREATE TABLE " +Tabe_Name+"("+ColumnID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+MESSAGE+" TEXT,"+TYPE+" INTEGER)");
         }
 
         @Override
@@ -256,15 +251,17 @@ public class ChatRoomActivity extends AppCompatActivity {
             db.execSQL("DROP TABLE IF EXISTS " + Tabe_Name);
             onCreate(db);
         }
-
         @Override
         public void onDowngrade(SQLiteDatabase db, int oldVer, int newVer) {
-            if (oldVer > newVer) {
+            if(oldVer>newVer){
                 db.execSQL("DROP TABLE IF EXISTS " + Tabe_Name);
                 onCreate(db);
             }
         }
     }// end SQLiteOpenHelper
+
+
+
 
 
     public class Message {
@@ -274,10 +271,11 @@ public class ChatRoomActivity extends AppCompatActivity {
         long id;
 
 
-        public Message(String user_message, boolean sender, long id) {
+
+        public Message(String user_message, boolean sender,long id) {
             this.user_message = user_message;
             this.sender = sender;
-            this.id = id;
+            this.id=id;
         }
 
         public String getMessage() {
@@ -291,16 +289,17 @@ public class ChatRoomActivity extends AppCompatActivity {
         public boolean getSender() {
             return sender;
         }
-
         public long getId() {
             return id;
         }
 
 
+
     }
-
-
 }
+
+
+
 
 
 

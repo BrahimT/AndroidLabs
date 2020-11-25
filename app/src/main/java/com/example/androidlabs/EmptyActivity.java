@@ -12,11 +12,11 @@ public class EmptyActivity extends AppCompatActivity {
         Bundle dataToPass = getIntent().getExtras(); //get the data that was passed from FragmentExample
 
         //This is copied directly from FragmentExample.java lines 47-54
-        DetailsFragment dFragment = new DetailsFragment();
+        DetailFragment dFragment = new DetailFragment();
         dFragment.setArguments( dataToPass ); //pass data to the the fragment
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragmentLocation, dFragment)
+                .replace(R.id.frame, dFragment)
                 .commit();
     }
 }

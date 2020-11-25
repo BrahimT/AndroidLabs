@@ -23,5 +23,6 @@
     <string name="type_here">ecris ici</string>
     <string name="sender">envoi</string>
     <string name="receiver">recois</string>
-
+    <string name="hello_blank_fragment">salut</string>
+    <item name="drawer_Layout" type="id" />
 </resources>

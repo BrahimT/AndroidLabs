@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="chat page"
+        android:id="@+id/gotochat"
+
+        android:orderInCategory="1"
+
+        />
+    <item android:title="Go back login"
+        android:id="@+id/login"
+
+
+        android:orderInCategory="2"/>
+
+    <item android:title="Weather Forecast"
+        android:id="@+id/weather"
+
+
+        android:orderInCategory="3"/>
+</menu>
