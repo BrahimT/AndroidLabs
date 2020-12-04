@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/cardview_dark_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:icon="@drawable/chat"
+            android:layout_alignParentBottom="true"
+            android:text="Chat Page
+" />
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/colorPrimary"
+            android:icon="@drawable/weather_forecast"
+            android:text="Weather Forecast" />
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/colorPrimary"
+            android:icon="@drawable/login"
+            android:text="Go back to login" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

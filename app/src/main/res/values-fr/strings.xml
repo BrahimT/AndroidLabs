@@ -23,5 +23,7 @@
     <string name="type_here">ecris ici</string>
     <string name="sender">envoi</string>
     <string name="receiver">recois</string>
-
+    <string name="navigation_drawer_opener">ouvert</string>
+    <string name="navigation_drawer_closer">fermer</string>
+    <string name="menu_drawer">menu</string>
 </resources>

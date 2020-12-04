@@ -1,6 +1,7 @@
 package com.example.androidlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,7 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
     String p2;
     Intent chatRoom;
     Intent  weatherForecast;
-    Intent toolbar;
+    Toolbar toolbar;
+    Intent tool;
 
 
 
@@ -40,6 +42,13 @@ public class ProfileActivity extends AppCompatActivity {
         mImageButton.setOnClickListener(e ->{
             dispatchTakePictureIntent();
         });
+
+        Button Toolbar=(Button) findViewById(R.id.button6);
+        Toolbar.setText("Go to toolbar");
+        Toolbar.setOnClickListener(e ->{
+            tool=new Intent(this, TestToolbar.class);
+            startActivity(tool);
+        });
         chat=(Button) findViewById(R.id.button4);
         chat.setText("Go to chat");
 
@@ -52,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
           weatherForecast=new Intent(this, WeatherForecast.class);
             startActivity( weatherForecast);
         });
+
 
     }
 
@@ -83,6 +93,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==500){
+            finish();
+        }
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
